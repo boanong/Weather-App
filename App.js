@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, View, Image, Text } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Feather } from '@expo/vector-icons';
+import WeatherForecast from './Components/WeatherForecast/WeatherForecast';
 
 const cloudPicture = { uri: 'https://png.pngtree.com/png-vector/20220905/ourmid/pngtree-cloudy-rainy-weather-icon-png-image_6138021.png' };
 
@@ -46,12 +47,13 @@ export default function App() {
             </View>
 
             <View style={[styles.weatherDetail, { marginVertical: 10 }]}>
-              <Feather name="air-quality" size={24} color="#fff" />
+              <Feather name="thermometer" size={24} color="#fff" />
               <Text style={styles.weatherDetailText}>Air Quality</Text>
               <Text style={styles.weatherDetailText}>173</Text>
             </View>
           </View>
         </View>
+        <WeatherForecast/>
       </LinearGradient>
     </View>
   );
