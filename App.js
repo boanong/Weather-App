@@ -1,62 +1,106 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import { Avatar, Card, Title, Paragraph } from 'react-native-paper';
+import { StyleSheet, View, Image, Text } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
+import { Feather } from '@expo/vector-icons';
 
-const WeatherAppScreen = () => {
+const cloudPicture = { uri: 'https://png.pngtree.com/png-vector/20220905/ourmid/pngtree-cloudy-rainy-weather-icon-png-image_6138021.png' };
+
+export default function App() {
+  const handleSearch = () => {
+    // Logic for handling search functionality
+  };
+
   return (
     <View style={styles.container}>
-      <Avatar.Icon style={styles.avatar} size={80} icon="weather-sunny" />
-      <Card style={styles.card}>
-        <Card.Content>
-          <Title style={styles.title}>Today's Weather</Title>
-          <Paragraph style={styles.subtitle}>Sunny</Paragraph>
-          <Paragraph style={styles.temperature}>24°C</Paragraph>
-        </Card.Content>
-      </Card>
-      <View style={styles.detailsContainer}>
-        <Text style={styles.detailsText}>Humidity: 60%</Text>
-        <Text style={styles.detailsText}>Wind: 10 km/h</Text>
-      </View>
+      <LinearGradient
+        colors={['rgba(1, 73, 194, 1)', 'rgba(19, 166, 243, 1)']}
+        style={styles.gradient}
+      >
+        {/* Search Icon */}
+        <Feather
+          name="search"
+          size={30}
+          color="#fff"
+          style={styles.searchIcon}
+          onPress={handleSearch}
+        />
+
+        {/* Weather component */}
+        <View style={styles.weatherContainer}>
+          <Image source={cloudPicture} style={styles.cloudPicture} />
+          <Text style={styles.temperature}>27°C</Text>
+          <Text style={styles.weatherDescription}>Thunder storm</Text>
+
+          {/* Wind, humidity, and air quality */}
+          <View style={styles.weatherDetailsContainer}>
+            <View style={styles.weatherDetail}>
+              <Feather name="wind" size={24} color="#fff" />
+              <Text style={styles.weatherDetailText}>Wind</Text>
+              <Text style={styles.weatherDetailText}>13km/h</Text>
+            </View>
+
+            <View style={[styles.weatherDetail, { marginVertical: 10 }]}>
+              <Feather name="droplet" size={24} color="#fff" />
+              <Text style={styles.weatherDetailText}>Humidity</Text>
+              <Text style={styles.weatherDetailText}>75%</Text>
+            </View>
+
+            <View style={[styles.weatherDetail, { marginVertical: 10 }]}>
+              <Feather name="air-quality" size={24} color="#fff" />
+              <Text style={styles.weatherDetailText}>Air Quality</Text>
+              <Text style={styles.weatherDetailText}>173</Text>
+            </View>
+          </View>
+        </View>
+      </LinearGradient>
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+  },
+  gradient: {
+    flex: 1,
+  },
+  searchIcon: {
+    position: 'absolute',
+    top: 30,
+    right: 30,
+  },
+  weatherContainer: {
     alignItems: 'center',
   },
-  avatar: {
-    marginBottom: 20,
-  },
-  card: {
-    width: '80%',
-  },
-  title: {
-    fontSize: 24,
-    textAlign: 'center',
-    fontWeight: 'bold',
-  },
-  subtitle: {
-    fontSize: 18,
-    textAlign: 'center',
+  cloudPicture: {
+    width: 150,
+    height: 150,
+    marginTop: 80,
   },
   temperature: {
-    fontSize: 36,
-    textAlign: 'center',
-    marginTop: 20,
-    marginBottom: 20,
+    fontSize: 55,
     fontWeight: 'bold',
+    color: '#fff',
   },
-  detailsContainer: {
+  weatherDescription: {
+    fontSize: 16,
+    color: '#fff',
+  },
+  weatherDetailsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     marginTop: 20,
+    // Added marginHorizontal to increase the spacing between the weather elements
+    marginHorizontal: 60,
+    width: '80%'
+  },
+  weatherDetail: {
+    // Added marginVertical to increase the spacing between the weather elements
+    marginVertical: 10,
     alignItems: 'center',
   },
-  detailsText: {
+  weatherDetailText: {
+    color: '#fff',
     fontSize: 16,
-    marginBottom: 10,
   },
 });
-
-export default WeatherAppScreen;
