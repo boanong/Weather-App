@@ -24,23 +24,28 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginTop: 20,
     width: '80%',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    backgroundColor: '#ffffff4f',
     padding: 10,
-    height: 180,
-    margin: 'auto'
-
+    height: 200,
+    margin: 'auto',
+    borderRadius: 20,
+    // opacity: 0.5,
   },
+
   forecastDay: {
     alignItems: 'center',
   },
+
   forecastDayLabel: {
     color: '#fff',
     fontSize: 16,
   },
+
   forecastDayTemperature: {
     color: '#fff',
     fontSize: 20,
   },
+
 });
 
 export default WeatherForecast;
