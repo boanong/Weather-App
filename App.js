@@ -3,6 +3,8 @@ import { StyleSheet, View, Image, Text } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Feather } from '@expo/vector-icons';
 import WeatherForecast from './Components/WeatherForecast/WeatherForecast';
+import Forecast from './data/DummyData';
+import WeatherSection from './Components/Sun/WeatherSection';
 
 const cloudPicture = { uri: 'https://png.pngtree.com/png-vector/20220905/ourmid/pngtree-cloudy-rainy-weather-icon-png-image_6138021.png' };
 
@@ -26,11 +28,20 @@ export default function App() {
           onPress={handleSearch}
         />
 
+
         {/* Weather component */}
         <View style={styles.weatherContainer}>
+          <Text style={styles.location}>
+            <Feather name="map-pin" size={17} color="#fff" marginRight={0} style={styles.locationIcon} />
+            LONDON
+          </Text>
+
           <Image source={cloudPicture} style={styles.cloudPicture} />
           <Text style={styles.temperature}>27°C</Text>
           <Text style={styles.weatherDescription}>Thunder storm</Text>
+
+          <WeatherSection />
+
 
           {/* Wind, humidity, and air quality */}
           <View style={styles.weatherDetailsContainer}>
@@ -53,9 +64,13 @@ export default function App() {
             </View>
           </View>
         </View>
-        <WeatherForecast/>
+        {/* Added the forecast prop to the WeatherForecast component */}
+        <WeatherForecast forecast={Forecast} />
       </LinearGradient>
+
     </View>
+
+
   );
 }
 
@@ -92,6 +107,20 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginTop: 20,
+    width: '80%',
+    backgroundColor: 'white',
+    padding: 10,
+    height: 200,
+    marginTop: 20,
+    // Added marginHorizontal to increase the spacing between the weather elements
+    marginHorizontal: 60,
+    width: '80%'
+  },
+
+  weatherDetailsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 20,
     // Added marginHorizontal to increase the spacing between the weather elements
     marginHorizontal: 60,
     width: '80%'
@@ -104,5 +133,18 @@ const styles = StyleSheet.create({
   weatherDetailText: {
     color: '#fff',
     fontSize: 16,
+    fontWeight: 'bold',
   },
+
+  location: {
+    fontSize: 25,
+    color: '#fff',
+    textAlign: 'center',
+    marginTop: 50,
+    marginBottom: 0,
+    position: 'absolute',
+    fontSize: '20pt',
+  }
+
+
 });
