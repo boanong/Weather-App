@@ -3,14 +3,15 @@ import { StyleSheet, View, Text, Image } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 
 const WeatherForecast = ({ forecast }) => {
-  const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday'];
+  const days = ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY'];
 
   return (
     <View style={styles.forecastContainer}>
       {forecast?.map((day, index) => (
         <View key={index} style={styles.forecastDay}>
           <Text style={styles.forecastDayLabel}>{days[index]}</Text>
-          <Feather name="sun" size={24} color="#fff" />
+          <day.Icon size={24} color="#fff"  style={styles.forecastweather}/>
+          
           <Text style={styles.forecastDayTemperature}>{day.temperature}°C</Text>
         </View>
       ))}
@@ -23,10 +24,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginTop: 20,
-    width: '80%',
+    width: '90%',
     backgroundColor: '#ffffff4f',
     padding: 10,
-    height: 200,
+    height: 150,
     margin: 'auto',
     borderRadius: 20,
     // opacity: 0.5,
@@ -45,6 +46,11 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 20,
   },
+
+  forecastweather: {
+    marginTop: 20,
+
+  }
 
 });
 

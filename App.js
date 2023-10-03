@@ -3,32 +3,9 @@ import { StyleSheet, View, Image, Text } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Feather } from '@expo/vector-icons';
 import WeatherForecast from './Components/WeatherForecast/WeatherForecast';
+import Forecast from './data/DummyData';
 
 const cloudPicture = { uri: 'https://png.pngtree.com/png-vector/20220905/ourmid/pngtree-cloudy-rainy-weather-icon-png-image_6138021.png' };
-
-const forecast = [
-  {
-    day: 'Sunday',
-    temperature: 25,
-    icon: 'sun',
-  },
-  {
-    day: 'Monday',
-    temperature: 26,
-    icon: 'cloud',
-  },
-  {
-    day: 'Tuesday',
-    temperature: 27,
-    icon: 'rain',
-  },
-  {
-    day: 'Wednesday',
-    temperature: 28,
-    icon: 'snow',
-  },
-];
-
 
 export default function App() {
   const handleSearch = () => {
@@ -53,7 +30,10 @@ export default function App() {
 
         {/* Weather component */}
         <View style={styles.weatherContainer}>
-        <Text style={styles.location}>London</Text>
+          <Text style={styles.location}>
+            <Feather name="map-pin" size={17} color="#fff" marginRight={0} style={styles.locationIcon} />
+            LONDON
+          </Text>
 
           <Image source={cloudPicture} style={styles.cloudPicture} />
           <Text style={styles.temperature}>27°C</Text>
@@ -81,7 +61,7 @@ export default function App() {
           </View>
         </View>
         {/* Added the forecast prop to the WeatherForecast component */}
-        <WeatherForecast forecast={forecast} />
+        <WeatherForecast forecast={Forecast} />
       </LinearGradient>
     </View>
   );
@@ -155,5 +135,8 @@ const styles = StyleSheet.create({
     marginTop: 50,
     marginBottom: 0,
     position: 'absolute',
+    fontSize: '20pt',
   }
+
+
 });
