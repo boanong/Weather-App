@@ -4,6 +4,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { Feather } from '@expo/vector-icons';
 import WeatherForecast from './Components/WeatherForecast/WeatherForecast';
 import Forecast from './data/DummyData';
+import WeatherSection from './Components/Sun/WeatherSection';
 
 const cloudPicture = { uri: 'https://png.pngtree.com/png-vector/20220905/ourmid/pngtree-cloudy-rainy-weather-icon-png-image_6138021.png' };
 
@@ -39,6 +40,9 @@ export default function App() {
           <Text style={styles.temperature}>27°C</Text>
           <Text style={styles.weatherDescription}>Thunder storm</Text>
 
+          <WeatherSection />
+
+
           {/* Wind, humidity, and air quality */}
           <View style={styles.weatherDetailsContainer}>
             <View style={styles.weatherDetail}>
@@ -63,7 +67,10 @@ export default function App() {
         {/* Added the forecast prop to the WeatherForecast component */}
         <WeatherForecast forecast={Forecast} />
       </LinearGradient>
+
     </View>
+
+
   );
 }
 
@@ -126,6 +133,7 @@ const styles = StyleSheet.create({
   weatherDetailText: {
     color: '#fff',
     fontSize: 16,
+    fontWeight: 'bold',
   },
 
   location: {
