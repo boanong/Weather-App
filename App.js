@@ -5,6 +5,7 @@ import { Feather } from '@expo/vector-icons';
 import WeatherForecast from './Components/WeatherForecast/WeatherForecast';
 import Forecast from './data/DummyData';
 import WeatherSection from './Components/Sun/WeatherSection';
+import FooterSection from './FooterSection';
 
 const cloudPicture = { uri: 'https://png.pngtree.com/png-vector/20220905/ourmid/pngtree-cloudy-rainy-weather-icon-png-image_6138021.png' };
 
@@ -66,6 +67,7 @@ export default function App() {
         </View>
         {/* Added the forecast prop to the WeatherForecast component */}
         <WeatherForecast forecast={Forecast} />
+        <FooterSection />
       </LinearGradient>
 
     </View>

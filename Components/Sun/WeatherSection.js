@@ -44,8 +44,6 @@ const styles = StyleSheet.create({
     width: 2,
     height: '70%',
     alignSelf: 'center',
-    marginLeft: 20,
-    marginRight: 20,
   },
   text: {
     color: 'white',
