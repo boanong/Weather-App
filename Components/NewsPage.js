@@ -13,6 +13,7 @@ const NewsPage = () => {
   };
 
   return (
+    
     <View style={styles.container}>
       <Text style={styles.title}>Weather News</Text>
       <TouchableOpacity style={styles.weatherItem}>

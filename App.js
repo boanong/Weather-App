@@ -1,34 +1,36 @@
 import React from 'react';
 import { StyleSheet, View, TouchableOpacity, Text } from 'react-native';
-import { FontAwesome } from '@expo/vector-icons';
 import GetStarted from './Components/GetStarted';
-import { NavigationContainer } from '@react-navigation/native';
-import Home from './Components/Home'
+import Home from './Components/Home';
 import NewsPage from './Components/NewsPage';
-
+import { Stack } from '@react-navigation/stack';
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 
 const App = () => {
+  const Stack = createNativeStackNavigator();
+
   return (
-    <View >
-      <NavigationContainer>
-      <GetStarted/>
-      <Home/>
-      
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="GetStarted">
+        <Stack.Screen
+          name="Home"
+          component={Home}
+          headerTitle="Home"
+        />
+        <Stack.Screen
+          name="GetStarted"
+          component={GetStarted}
+          headerTitle="Get Started"
+        />
+        <Stack.Screen
+          name="NewsPage"
+          component={NewsPage}
+          headerTitle="News"
+        />
+      </Stack.Navigator>
     </NavigationContainer>
-
-
-
-
-
-
-    <NewsPage/>
-
-
-    
-  
-
-    </View>
   );
 };
 
