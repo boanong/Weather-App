@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, View, Text, Image, TouchableOpacity } from "react-native";
+import FooterSection from "../FooterSection";
 
 const NewsPage = () => {
   const image1 = "https://hindi.cdn.zeenews.com/hindi/sites/default/files/styles/zm_700x400/public/2019/09/18/431150-rain-6.jpg?itok=caYeS9WQ&im=Resize=(400,229)";
@@ -13,8 +14,10 @@ const NewsPage = () => {
   };
 
   return (
-    
+
+
     <View style={styles.container}>
+
       <Text style={styles.title}>Weather News</Text>
       <TouchableOpacity style={styles.weatherItem}>
         <Image source={{ uri: weatherImage }} style={styles.weatherImage} />
@@ -30,7 +33,7 @@ const NewsPage = () => {
         <View style={styles.newsDetails}>
           <Text style={styles.newsTitle}>Heavy Rain Expected in the Northeast</Text>
           <Text style={styles.newsText}>
-            The National Weather Service has issued a warning for heavy rain and potential flooding in the Northeast region. Residents are advised to stay informed and take necessary precautions...
+            The National Weather Service has issued a warning for heavy...
           </Text>
         </View>
       </TouchableOpacity>
@@ -39,7 +42,7 @@ const NewsPage = () => {
         <View style={styles.newsDetails}>
           <Text style={styles.newsTitle}>Sunny Skies Ahead for the West Coast</Text>
           <Text style={styles.newsText}>
-            After a week of rain and cloudy skies, the West Coast can expect clear and sunny weather for the next few days. Residents can enjoy outdoor activities and make the most of the good weather...
+            After a week of rain and cloudy skies, the West Coast can...
           </Text>
         </View>
       </TouchableOpacity>
@@ -48,31 +51,38 @@ const NewsPage = () => {
         <View style={styles.newsDetails}>
           <Text style={styles.newsTitle}>Tornado Warning Issued for Midwest</Text>
           <Text style={styles.newsText}>
-            The National Weather Service has issued a tornado warning for several states in the Midwest. Residents are advised to take shelter immediately if a tornado warning is issued for their area...
+            The National Weather Service has issued a tornado warning...
           </Text>
         </View>
       </TouchableOpacity>
+      <FooterSection style={styles.footerElements} />
+
     </View>
   );
 };
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "white",
     padding: 20,
+    backgroundColor: 'transparent',
+    backgroundImage: 'linear-gradient(to right, rgba(1, 73, 194, 1), rgba(19, 166, 243, 1))',
   },
+
+
   title: {
-    fontSize: 24,
+    fontSize: 30,
     fontWeight: "bold",
     textAlign: "center",
+    color: 'white'
+
   },
   weatherItem: {
-    marginTop: 20,
+    marginTop: 50,
     flexDirection: "row",
     borderRadius: 10,
     backgroundColor: "#f8f8f8",
   },
+
   weatherImage: {
     width: 100,
     height: 100,
@@ -86,12 +96,12 @@ const styles = StyleSheet.create({
   },
   newsItem: {
     marginTop: 20,
-    flexDirection: "row",borderRadius: 10,
+    flexDirection: "row", borderRadius: 10,
     backgroundColor: "#f8f8f8",
   },
   image: {
     width: 100,
-    height: 100,
+    height: '100%',
     borderTopLeftRadius: 10,
     borderBottomLeftRadius: 10,
     resizeMode: "cover",
@@ -112,7 +122,7 @@ const styles = StyleSheet.create({
     width: "90%",
   },
   weatherItem: {
-    width: "90%",
+    width: "98%",
     borderRadius: 10,
     backgroundColor: "white",
     shadowColor: "#000",
@@ -138,6 +148,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "#666",
   },
+  
 });
 
 export default NewsPage;
