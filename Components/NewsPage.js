@@ -55,7 +55,7 @@ const NewsPage = () => {
           </Text>
         </View>
       </TouchableOpacity>
-      <FooterSection style={styles.footerElements} />
+      <FooterSection style={{ ...styles.footerElements, width: '20%', }} />
 
     </View>
   );
@@ -63,7 +63,6 @@ const NewsPage = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
     backgroundColor: 'transparent',
     backgroundImage: 'linear-gradient(to right, rgba(1, 73, 194, 1), rgba(19, 166, 243, 1))',
   },
@@ -80,7 +79,9 @@ const styles = StyleSheet.create({
     marginTop: 50,
     flexDirection: "row",
     borderRadius: 10,
-    backgroundColor: "#f8f8f8",
+    backgroundColor: "black",
+    margin: 'auto',
+    width: '80',
   },
 
   weatherImage: {
@@ -98,6 +99,8 @@ const styles = StyleSheet.create({
     marginTop: 20,
     flexDirection: "row", borderRadius: 10,
     backgroundColor: "#f8f8f8",
+    width: '93%',
+    
   },
   image: {
     width: 100,

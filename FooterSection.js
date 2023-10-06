@@ -8,7 +8,7 @@ const FooterSection = () => {
     const navigation = useNavigation();
 
     return (
-        <View style={styles.container}>
+        <View style={styles.footerContainer}>
             <TouchableOpacity style={styles.item}
                 onPress={() => navigation.navigate('Home')}>
                 <FontAwesome name="home" size={24} color="black" />
@@ -32,7 +32,7 @@ const FooterSection = () => {
 };
 
 const styles = StyleSheet.create({
-    container: {
+    footerContainer: {
         flexDirection: 'row',
         justifyContent: 'space-around',
         alignItems: 'center',
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
         borderTopWidth: 1,
         borderTopColor: 'gray',
         color: 'white',
-        width: '100%'
+        width: '100%',
     },
     item: {
         alignItems: 'center',
