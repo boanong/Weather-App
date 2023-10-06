@@ -16,8 +16,7 @@ const NewsPage = () => {
   return (
 
 
-    <View style={styles.container}>
-
+    <View style={styles.container} screenOptions={{ headerShown: false }}>
       <Text style={styles.title}>Weather News</Text>
       <TouchableOpacity style={styles.weatherItem}>
         <Image source={{ uri: weatherImage }} style={styles.weatherImage} />
@@ -67,7 +66,6 @@ const styles = StyleSheet.create({
     backgroundImage: 'linear-gradient(to right, rgba(1, 73, 194, 1), rgba(19, 166, 243, 1))',
   },
 
-
   title: {
     fontSize: 30,
     fontWeight: "bold",
@@ -81,7 +79,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: "black",
     margin: 'auto',
-    width: '80',
   },
 
   weatherImage: {
@@ -100,7 +97,8 @@ const styles = StyleSheet.create({
     flexDirection: "row", borderRadius: 10,
     backgroundColor: "#f8f8f8",
     width: '93%',
-    
+    margin: 'auto'
+
   },
   image: {
     width: 100,
@@ -151,7 +149,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "#666",
   },
-  
+
 });
 
 export default NewsPage;

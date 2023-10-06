@@ -28,6 +28,7 @@ const App = () => {
           name="NewsPage"
           component={NewsPage}
           headerTitle="News"
+          options={{ headerShown: false }}
         />
       </Stack.Navigator>
     </NavigationContainer>
