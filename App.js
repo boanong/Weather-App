@@ -18,7 +18,9 @@ const App = () => {
           name="Home"
           component={Home}
           headerTitle="Home"
+          options={{ headerShown: false }}
         />
+        
         <Stack.Screen
           name="GetStarted"
           component={GetStarted}

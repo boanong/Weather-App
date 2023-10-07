@@ -103,6 +103,7 @@ const styles = StyleSheet.create({
   weatherDescription: {
     fontSize: 16,
     color: '#fff',
+    paddingBottom: 20,
   },
   weatherDetailsContainer: {
     flexDirection: 'row',

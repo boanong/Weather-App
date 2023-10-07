@@ -30,6 +30,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     paddingHorizontal: 10,
     justifyContent: 'center',
+    marginTop: '50',
   },
   leftSection: {
     flexDirection: 'row',
@@ -44,6 +45,8 @@ const styles = StyleSheet.create({
     width: 2,
     height: '70%',
     alignSelf: 'center',
+    marginLeft: 30,
+    marginRight: 30,
   },
   text: {
     color: 'white',

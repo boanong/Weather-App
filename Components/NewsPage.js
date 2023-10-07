@@ -70,15 +70,17 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: "bold",
     textAlign: "center",
-    color: 'white'
-
+    color: 'white',
+    marginTop: '8%',
+    marginBottom: '8%'
   },
+
   weatherItem: {
     marginTop: 50,
     flexDirection: "row",
     borderRadius: 10,
     backgroundColor: "black",
-    margin: 'auto',
+    width: '80%',
   },
 
   weatherImage: {
@@ -88,6 +90,7 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 10,
     resizeMode: "contain",
   },
+
   weatherDetails: {
     flex: 1,
     padding: 10,
@@ -131,6 +134,8 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.5,
     shadowRadius: 4,
     elevation: 5,
+    width: '93%',
+    margin: 'auto',
   },
   weatherImage: {
     width: "100%",

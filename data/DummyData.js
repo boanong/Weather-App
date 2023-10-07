@@ -10,7 +10,7 @@ const Forecast = [
         day: 'Monday',
         temperature: 26,
         // icon: 'cloud',
-        Icon: ({ style, color, size }) => <Feather name="rain" size={size} color={color} style={style} />,
+        Icon: ({ style, color, size }) => <Feather name="sun" size={size} color={color} style={style} />,
     },
     {
         day: 'Tuesday',
