@@ -54,7 +54,7 @@ const NewsPage = () => {
           </Text>
         </View>
       </TouchableOpacity>
-      <FooterSection style={{ ...styles.footerElements, width: '20%', }} />
+      <FooterSection style={{ ...styles.footerElements, width: '20%', backgroundColor: 'black' }} />
 
     </View>
   );
@@ -64,8 +64,9 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'transparent',
     backgroundImage: 'linear-gradient(to right, rgba(1, 73, 194, 1), rgba(19, 166, 243, 1))',
-  },
+    flexGrow: 1,
 
+  },
   title: {
     fontSize: 30,
     fontWeight: "bold",
@@ -95,14 +96,15 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 10,
   },
+
   newsItem: {
     marginTop: 20,
     flexDirection: "row", borderRadius: 10,
     backgroundColor: "#f8f8f8",
     width: '93%',
     margin: 'auto'
-
   },
+  
   image: {
     width: 100,
     height: '100%',
@@ -110,21 +112,25 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 10,
     resizeMode: "cover",
   },
+
   newsDetails: {
     flex: 1,
     padding: 10,
   },
+
   newsTitle: {
     fontSize: 18,
     fontWeight: "bold",
     marginBottom: 5,
   },
+
   newsText: {
     fontSize: 16,
     color: "#666",
     flexWrap: "wrap",
     width: "90%",
   },
+
   weatherItem: {
     width: "98%",
     borderRadius: 10,
@@ -137,19 +143,23 @@ const styles = StyleSheet.create({
     width: '93%',
     margin: 'auto',
   },
+
   weatherImage: {
     width: "100%",
     height: 200,
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
   },
+
   weatherDetails: {
     padding: 10,
   },
+
   newsTitle: {
     fontSize: 18,
     fontWeight: "bold",
   },
+
   newsText: {
     fontSize: 16,
     color: "#666",

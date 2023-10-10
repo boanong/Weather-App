@@ -3,14 +3,14 @@ import { StyleSheet, View, Image, Text, TouchableOpacity } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
 
-const BackgroundImage = { uri: 'https://example.com/background.png' }; // Replace with the actual image URL
-const WeatherImage = { uri: 'https://cdn2.iconfinder.com/data/icons/weather-365/64/weather-sun-cloud-rain-512.png' }; // Replace with the actual image URL
+const BackgroundImage = { uri: 'https://example.com/background.png' }; 
+const WeatherImage = { uri: 'https://cdn2.iconfinder.com/data/icons/weather-365/64/weather-sun-cloud-rain-512.png' };
 
 const GetStarted = () => {
   const navigation = useNavigation();
 
   const handleGetStarted = () => {
-    navigation.navigate('Home'); // Replace 'Home' with the name of your home screen component
+    navigation.navigate('Home');
   };
 
   return (
@@ -82,6 +82,7 @@ const styles = StyleSheet.create({
     color: '#1F2471',
     fontWeight: 'bold',
   },
+  
   description: {
     fontSize: 12,
     color: '#fff',

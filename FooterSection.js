@@ -42,6 +42,8 @@ const styles = StyleSheet.create({
         borderTopColor: 'gray',
         color: 'white',
         width: '100%',
+        position: 'absolute',
+        bottom: 0,
     },
     item: {
         alignItems: 'center',
