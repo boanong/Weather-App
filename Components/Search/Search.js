@@ -14,7 +14,7 @@ export default function Search({ forecast }) {
         try {
             const res = await fetch(search_url).then(r => r.json());
 
-            console.log({ res, API_KEY });
+            console.log({ res });
 
             setResults(res)
         } catch (error) {
@@ -24,7 +24,7 @@ export default function Search({ forecast }) {
 
     React.useEffect(() => {
         const timeId = setTimeout(() => {
-            handleSearch();
+            searchval.trim() && handleSearch();
         }, 1000);
 
         return () => clearTimeout(timeId);

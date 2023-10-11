@@ -1,11 +1,12 @@
-import { View, Text } from "react-native";
 
-export default function Suggestions({ resulst = [] }) {
+import { StyleSheet, View, Text } from "react-native";
+
+export default function Suggestions({ results = [] }) {
     return (
-      <View>
+      <View style={styles.suggestions}>
         <Text>Suggestions</Text>
         <View>
-          {resulst?.map((res) => {
+          {results?.map((res) => {
             return (
               <View style={{border: "1px solid gray", textAlign: "left", paddingLeft: "5px"}}>
                 <Text>{res.name}</Text>
@@ -19,3 +20,16 @@ export default function Suggestions({ resulst = [] }) {
       </View>
     );
   }
+
+  const styles = StyleSheet.create ({
+    suggestions: {
+        position: 'absolute',
+        backgroundColor: 'white',
+        margin: '20%',
+        width: '70%',
+        borderRadius: 10,
+
+    }
+  }
+
+  )
