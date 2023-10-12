@@ -25,7 +25,6 @@ export default function App() {
         colors={['rgba(1, 73, 194, 1)', 'rgba(19, 166, 243, 1)']}
         style={styles.gradient}
       >
-
         <Search />
         {/* Search Icon */}
         <Feather
@@ -48,7 +47,6 @@ export default function App() {
           <Text style={styles.weatherDescription}>Thunder storm</Text>
 
           <WeatherSection />
-
 
           {/* Wind, humidity, and air quality */}
           <View style={styles.weatherDetailsContainer}>
@@ -75,7 +73,7 @@ export default function App() {
         <WeatherForecast forecast={Forecast} />
         <TodayForecast />
 
-        <FooterSection />
+        {/* <FooterSection /> */}
       </LinearGradient>
 
     </View>
@@ -89,7 +87,9 @@ const styles = StyleSheet.create({
   },
 
   gradient: {
-    flex: 1,
+    // flex: 1,
+    backgroundColor: "orange",
+    // height: 200,
   },
 
   searchIcon: {
@@ -168,5 +168,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     fontSize: 18,
   },
-
 });

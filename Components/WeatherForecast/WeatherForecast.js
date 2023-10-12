@@ -11,7 +11,7 @@ const WeatherForecast = ({ forecast }) => {
         <View key={index} style={styles.forecastDay}>
           <Text style={styles.forecastDayLabel}>{days[index]}</Text>
           <day.Icon size={24} color="#fff"  style={styles.forecastweather}/>
-          
+
           <Text style={styles.forecastDayTemperature}>{day.temperature}°C</Text>
         </View>
       ))}

@@ -1,18 +1,22 @@
 
 import { StyleSheet, View, Text, Pressable } from "react-native";
 import { useAppContext } from "../../Context/Context";
-import { getLocationWeather, distributeWeather } from "../../Services/Functions";
+import { distributeWeather } from "../../Services/weather/functions";
+import getLocationWeather from "../../Services/weather/weather.api";
 
-export default function Suggestions({ results = [] }) {
-  const { weather, setWeather } = useAppContext();
+export default function Suggestions({ suggestions = [] }) {
+  const { setWeatherForeCast, setTodaysWeather } = useAppContext();
 
   const getWeather = (lat, lon) => {
     getLocationWeather(lat, lon)
       .then(weather => {
-        const day_weather = distributeWeather(weather.list);
+        const { _5_day_weather, sorted_days } = distributeWeather(weather.list);
+        const today = new Date().toDateString();
 
         console.clear();
-        console.log(day_weather)
+        console.log({ _5_day_weather, sorted_days });
+        setWeatherForeCast(_5_day_weather);
+        setTodaysWeather(_5_day_weather[today]);
       })
       .catch(console.log);
   }
@@ -21,13 +25,13 @@ export default function Suggestions({ results = [] }) {
     <View style={styles.suggestions}>
       <Text>Suggestions</Text>
       <View>
-        {results?.map((res) => {
+        {suggestions?.map((suggestion) => {
           return (
-            <Pressable key={res.country} style={{ border: "1px solid gray", textAlign: "left", paddingLeft: "5px" }} onPress={() => getWeather(res.lat, res.lon)}>
-              <Text>{res.name}</Text>
-              <Text>country: {res.country}</Text>
-              <Text>lat: {res.lat}</Text>
-              <Text>lon: {res.lon}</Text>
+            <Pressable key={suggestion.country} style={{ border: "1px solid gray", textAlign: "left", paddingLeft: "5px" }} onPress={() => getWeather(suggestion.lat, suggestion.lon)}>
+              <Text>{suggestion.name}</Text>
+              <Text>country: {suggestion.country}</Text>
+              <Text>lat: {suggestion.lat}</Text>
+              <Text>lon: {suggestion.lon}</Text>
             </Pressable>
           );
         })}

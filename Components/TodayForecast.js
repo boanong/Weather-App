@@ -1,7 +1,9 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import { useAppContext } from '../Context/Context';
 
 const TodayForecast = () => {
+  const { todaysWeather } = useAppContext();
   const forecasts = [
     { time: '12:00 PM', temperature: '70°F', condition: 'Sunny' },
     { time: '3:00 PM', temperature: '75°F', condition: 'Partly Cloudy' },
@@ -9,13 +11,18 @@ const TodayForecast = () => {
     { time: '9:00 PM', temperature: '63°F', condition: 'Cloudy' },
   ];
 
+  React.useEffect(() => {
+    console.clear();
+    console.log("todaysWeather", todaysWeather);
+  }, [todaysWeather])
+
   return (
     <View style={styles.container}>
-      {forecasts.map((forecast, index) => (
-        <View key={index} style={styles.forecastContainer}>
-          <Text style={styles.time}>{forecast.time}</Text>
-          <Text style={styles.temperature}>{forecast.temperature}</Text>
-          <Text style={styles.condition}>{forecast.condition}</Text>
+      {todaysWeather?.map((forecast, index) => (
+        <View key={forecast.dt} style={styles.forecastContainer}>
+          <Text style={styles.time}>{new Date(forecast.dt_txt).toLocaleTimeString()}</Text>
+          <Text style={styles.temperature}>{forecast.main.temp + "deg C"}</Text>
+          <Text style={styles.condition}>{forecast.weather[0].description}</Text>
         </View>
       ))}
     </View>
@@ -25,15 +32,15 @@ const TodayForecast = () => {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
     alignItems: 'center',
     paddingHorizontal: 20,
     paddingVertical: 10,
-    backgroundColor: '#fff',
     borderBottomWidth: 1,
-    borderBottomColor: '#ccc',
-    backgroundColor: '#ffffff4f',
-    marginBottom: 'auto'
+    backgroundColor: 'red',
+    marginBottom: 'auto',
+    width: '90%',
+    margin: 'auto'
   },
   forecastContainer: {
     alignItems: 'center',
@@ -56,3 +63,8 @@ const styles = StyleSheet.create({
 });
 
 export default TodayForecast;
+
+
+{forecast.map(forecast, index)} => {
+  <View 
+}

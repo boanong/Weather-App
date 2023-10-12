@@ -3,14 +3,19 @@ import { createContext, useContext, useState } from "react";
 const AppContext = createContext(null);
 
 const AppContextProvider = ({ children }) => {
-    const [data, setData] = useState([]);
-    const [weather, setWeather] = useState([]);
+    const [days, setDays] = useState([]);
+    const [weatherForeCast, setWeatherForeCast] = useState([]);
+    const [todaysWeather, setTodaysWeather] = useState([]);
 
     return <AppContext.Provider value={{
-        data,
-        setData,
-        weather,
-        setWeather
+        days,
+        setDays,
+
+        weatherForeCast,
+        setWeatherForeCast,
+
+        todaysWeather,
+        setTodaysWeather
     }}>
         {children}
     </AppContext.Provider>
