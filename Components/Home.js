@@ -7,6 +7,7 @@ import Forecast from '../data/DummyData';
 import WeatherSection from '../Components/Sun/WeatherSection';
 import FooterSection from '../FooterSection';
 import Search from './Search/Search';
+import TodayForecast from './TodayForecast';
 
 const cloudPicture = { uri: 'https://png.pngtree.com/png-vector/20220905/ourmid/pngtree-cloudy-rainy-weather-icon-png-image_6138021.png' };
 
@@ -72,6 +73,8 @@ export default function App() {
         </View>
         {/* Added the forecast prop to the WeatherForecast component */}
         <WeatherForecast forecast={Forecast} />
+        <TodayForecast />
+
         <FooterSection />
       </LinearGradient>
 
