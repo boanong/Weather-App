@@ -44,11 +44,11 @@ const styles = StyleSheet.create ( {
         fontSize: 20,
         color: 'black',
         borderRadius: 50,
-        backgroundColor: 'white', 
+        backgroundColor: 'red', 
         width: '60%',
         height: '100%',
         margin:'auto',
-        marginTop: '9%'
+        marginTop: '9%',
     }
 
 

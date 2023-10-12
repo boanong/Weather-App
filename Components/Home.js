@@ -15,6 +15,8 @@ export default function App() {
     // Logic for handling search functionality
   };
 
+  // return <Search />
+
   return (
     <View style={styles.container}>
       <StatusBar />
