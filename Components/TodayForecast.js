@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { useAppContext } from '../Context/Context';
+import { removeSecondsFromTime } from '../Services/utils';
 
 const TodayForecast = () => {
   const { todaysWeather } = useAppContext();
@@ -12,7 +13,7 @@ const TodayForecast = () => {
   ];
 
   React.useEffect(() => {
-    console.clear();
+    // console.clear();
     console.log("todaysWeather", todaysWeather);
   }, [todaysWeather])
 
@@ -20,8 +21,8 @@ const TodayForecast = () => {
     <View style={styles.container}>
       {todaysWeather?.map((forecast, index) => (
         <View key={forecast.dt} style={styles.forecastContainer}>
-          <Text style={styles.time}>{new Date(forecast.dt_txt).toLocaleTimeString()}</Text>
-          <Text style={styles.temperature}>{forecast.main.temp + "deg C"}</Text>
+          <Text style={styles.time}>{removeSecondsFromTime(forecast.dt_txt)}</Text>
+          <Text style={styles.temperature}>{forecast.main.temp + " "}&deg;C</Text>
           <Text style={styles.condition}>{forecast.weather[0].description}</Text>
         </View>
       ))}
@@ -32,6 +33,7 @@ const TodayForecast = () => {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
+    flexWrap: "wrap",
     justifyContent: 'space-around',
     alignItems: 'center',
     paddingHorizontal: 20,
@@ -63,8 +65,3 @@ const styles = StyleSheet.create({
 });
 
 export default TodayForecast;
-
-
-{forecast.map(forecast, index)} => {
-  <View 
-}

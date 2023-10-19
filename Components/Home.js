@@ -3,7 +3,6 @@ import { StyleSheet, View, Image, Text, StatusBar } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Feather } from '@expo/vector-icons';
 import WeatherForecast from '../Components/WeatherForecast/WeatherForecast';
-import Forecast from '../data/DummyData';
 import WeatherSection from '../Components/Sun/WeatherSection';
 import FooterSection from '../FooterSection';
 import Search from './Search/Search';
@@ -70,7 +69,7 @@ export default function App() {
           </View>
         </View>
         {/* Added the forecast prop to the WeatherForecast component */}
-        <WeatherForecast forecast={Forecast} />
+        <WeatherForecast />
         <TodayForecast />
 
         {/* <FooterSection /> */}

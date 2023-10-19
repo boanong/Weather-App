@@ -5,7 +5,7 @@ import { distributeWeather } from "../../Services/weather/functions";
 import getLocationWeather from "../../Services/weather/weather.api";
 
 export default function Suggestions({ suggestions = [] }) {
-  const { setWeatherForeCast, setTodaysWeather } = useAppContext();
+  const { setWeatherForeCast, setTodaysWeather, setDays } = useAppContext();
 
   const getWeather = (lat, lon) => {
     getLocationWeather(lat, lon)
@@ -15,8 +15,10 @@ export default function Suggestions({ suggestions = [] }) {
 
         console.clear();
         console.log({ _5_day_weather, sorted_days });
+
         setWeatherForeCast(_5_day_weather);
         setTodaysWeather(_5_day_weather[today]);
+        setDays([...sorted_days]);
       })
       .catch(console.log);
   }

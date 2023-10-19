@@ -1,9 +1,13 @@
 import React from 'react';
 import { StyleSheet, View, Text, Image } from 'react-native';
+import forecast from "../../data/DummyData";
 import { Feather } from '@expo/vector-icons';
+import { useAppContext } from '../../Context/Context';
 
-const WeatherForecast = ({ forecast }) => {
-  const days = ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY'];
+const WeatherForecast = () => {
+  // const days = ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY'];
+  
+  const { days } = useAppContext();
 
   return (
     <View style={styles.forecastContainer}>
