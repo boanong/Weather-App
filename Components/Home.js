@@ -7,43 +7,16 @@ import WeatherSection from '../Components/Sun/WeatherSection';
 import FooterSection from '../FooterSection';
 import Search from './Search/Search';
 import TodayForecast from './TodayForecast';
-import { getDefaultLocation } from '../Services/utils';
-import getWeatherData from '../Services/weather/weather.api';
 import { useAppContext } from '../Context/Context';
 
 const cloudPicture = { uri: 'https://png.pngtree.com/png-vector/20220905/ourmid/pngtree-cloudy-rainy-weather-icon-png-image_6138021.png' };
 
 export default function App() {
-  const {
-    setDays,
-    setCurrentDAy,
-    setWeatherForeCast,
-    setTodaysWeather,
-    setLocation,
-  } = useAppContext();
-
-  const getLocation = async () => {
-    const location = await getDefaultLocation(); // get's user's location.
-
-    // console.log("location", location); // see ipgeolocation response.
-    const lat = location.latitude;
-    const lon = location.longitude;
-
-    getWeatherData(lat, lon)
-      .then((res) => {
-        const { _5_day_weather, sorted_days, today, location } = res;
-        setWeatherForeCast(_5_day_weather);
-        setTodaysWeather(_5_day_weather[today]);
-        setDays([...sorted_days]);
-        setCurrentDAy(today);
-        setLocation(location)
-      })
-      .catch(console.log);
-  }
+  const { currentWeather, location } = useAppContext();
 
   React.useEffect(() => {
-    getLocation();
-  }, [])
+    console.log({location})
+  }, [location])
 
   return (
     <View style={styles.container}>
@@ -54,17 +27,17 @@ export default function App() {
       >
         <Search />
         {/* Search Icon */}
-        
+
         {/* Weather component */}
         <View style={styles.weatherContainer}>
           <Text style={styles.location}>
             <Feather name="map-pin" size={17} color="#fff" marginRight={0} style={styles.locationIcon} />
-            LONDON
+            {location?.name ?? "Location"}
           </Text>
 
           <Image source={cloudPicture} style={styles.cloudPicture} />
-          <Text style={styles.temperature}>27°C</Text>
-          <Text style={styles.weatherDescription}>Thunder storm</Text>
+          <Text style={styles.temperature}>{currentWeather?.temp ?? "T"} &deg;</Text>
+          <Text style={styles.weatherDescription}>{currentWeather?.description ?? ""}</Text>
 
           <WeatherSection />
 
@@ -73,19 +46,19 @@ export default function App() {
             <View style={styles.weatherDetail}>
               <Feather name="wind" size={24} color="#fff" />
               <Text style={styles.weatherDetailText}>Wind</Text>
-              <Text style={styles.weatherDetailText}>13km/h</Text>
+              <Text style={styles.weatherDetailText}>{currentWeather?.wind_speed ?? ""} km/h</Text>
             </View>
 
             <View style={[styles.weatherDetail, { marginVertical: 10 }]}>
               <Feather name="droplet" size={24} color="#fff" />
               <Text style={styles.weatherDetailText}>Humidity</Text>
-              <Text style={styles.weatherDetailText}>75%</Text>
+              <Text style={styles.weatherDetailText}>{currentWeather?.humidity ?? "H"} %</Text>
             </View>
 
             <View style={[styles.weatherDetail, { marginVertical: 10 }]}>
               <Feather name="thermometer" size={24} color="#fff" />
-              <Text style={styles.weatherDetailText}>Air Quality</Text>
-              <Text style={styles.weatherDetailText}>173</Text>
+              <Text style={styles.weatherDetailText}>Air Pressure</Text>
+              <Text style={styles.weatherDetailText}>{currentWeather?.pressure ?? ""} Pa</Text>
             </View>
           </View>
         </View>

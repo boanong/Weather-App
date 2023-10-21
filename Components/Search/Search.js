@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, Image, TextInput } from 'react-native';
+import { StyleSheet, View, Text, Image, TextInput, Modal, TouchableOpacity } from 'react-native';
 import { API_KEY } from "../../Services/Constants";
 import { Feather } from '@expo/vector-icons';
 import Suggestions from './Suggestion';
@@ -7,6 +7,9 @@ import Suggestions from './Suggestion';
 export default function Search({ forecast }) {
     const [searchval, setSearchVAl] = React.useState("");
     const [suggestions, setLocationSuggestions] = React.useState(null);
+    const [showSuggestions, setShowSuggestions] = React.useState(true)
+
+    const handleClose = () => setShowSuggestions(false);
 
     const handleSearch = async () => {
         if (!searchval.trim()) return;
@@ -33,25 +36,55 @@ export default function Search({ forecast }) {
     }, [searchval])
 
     return (
-        <View style={styles.container}>
-            <TextInput placeholder='search location' value={searchval} onChangeText={(value) => setSearchVAl(value)} style={styles.searchStyles} />
-            <Suggestions suggestions={suggestions} />
+        <View>
+            <View style={styles.container}>
+                <Modal
+                    style={styles.overlay}
+                    visible={showSuggestions}
+                    transparent
+                    onRequestClose={handleClose}
+                >
+                    <TouchableOpacity
+                        style={{ flex: 1 }}
+                    >
+                        <TextInput
+                            placeholder='search location'
+                            style={styles.input}
+                            value={searchval}
+                            onBlur={handleClose}
+                            onChangeText={(value) => setSearchVAl(value)} style={styles.searchStyles}
+                        />
 
-            <Feather
-                name="search"
-                size={30}
-                color="#fff"
-                style={styles.searchIcon}
-                onPress={handleSearch}
-            />
+                        <Suggestions suggestions={suggestions} />
+                    </TouchableOpacity>
+                </Modal>
+
+                <Feather
+                    name="search"
+                    size={30}
+                    color="#fff"
+                    style={styles.searchIcon}
+                    onPress={handleSearch}
+                />
+            </View>
         </View>
     );
 };
 
 const styles = StyleSheet.create({
+    overlay: {
+        backgroundColor: "orange",
+        // position: "fixed",
+        // width: "100%",
+        // height: "100%",
+        // zIndex: 90,
+    },
     container: {
         position: "relative",
         zIndex: 3,
+    },
+    input: {
+        height: 90
     },
     searchStyles: {
         fontSize: 20,
