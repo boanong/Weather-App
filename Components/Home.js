@@ -7,15 +7,43 @@ import WeatherSection from '../Components/Sun/WeatherSection';
 import FooterSection from '../FooterSection';
 import Search from './Search/Search';
 import TodayForecast from './TodayForecast';
+import { getDefaultLocation } from '../Services/utils';
+import getWeatherData from '../Services/weather/weather.api';
+import { useAppContext } from '../Context/Context';
 
 const cloudPicture = { uri: 'https://png.pngtree.com/png-vector/20220905/ourmid/pngtree-cloudy-rainy-weather-icon-png-image_6138021.png' };
 
 export default function App() {
-  const handleSearch = () => {
-    // Logic for handling search functionality
-  };
+  const {
+    setDays,
+    setCurrentDAy,
+    setWeatherForeCast,
+    setTodaysWeather,
+    setLocation,
+  } = useAppContext();
 
-  // return <Search />
+  const getLocation = async () => {
+    const location = await getDefaultLocation(); // get's user's location.
+
+    // console.log("location", location); // see ipgeolocation response.
+    const lat = location.latitude;
+    const lon = location.longitude;
+
+    getWeatherData(lat, lon)
+      .then((res) => {
+        const { _5_day_weather, sorted_days, today, location } = res;
+        setWeatherForeCast(_5_day_weather);
+        setTodaysWeather(_5_day_weather[today]);
+        setDays([...sorted_days]);
+        setCurrentDAy(today);
+        setLocation(location)
+      })
+      .catch(console.log);
+  }
+
+  React.useEffect(() => {
+    getLocation();
+  }, [])
 
   return (
     <View style={styles.container}>
@@ -26,14 +54,7 @@ export default function App() {
       >
         <Search />
         {/* Search Icon */}
-        <Feather
-          name="search"
-          size={30}
-          color="#fff"
-          style={styles.searchIcon}
-          onPress={handleSearch}
-        />
-
+        
         {/* Weather component */}
         <View style={styles.weatherContainer}>
           <Text style={styles.location}>
@@ -74,9 +95,7 @@ export default function App() {
 
         {/* <FooterSection /> */}
       </LinearGradient>
-
     </View>
-
   );
 }
 

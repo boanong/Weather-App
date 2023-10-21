@@ -27,6 +27,7 @@ const App = () => {
           headerTitle="Get Started"
           options={{ headerShown: false }}
         />
+
         <Stack.Screen
           name="NewsPage"
           component={NewsPage}

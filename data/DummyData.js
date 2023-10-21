@@ -24,6 +24,12 @@ const Forecast = [
         // icon: 'snow',
         Icon: ({ style, color, size }) => <Feather name="cloud-snow" size={size} color={color} style={style} />,
     },
+    {
+        day: 't',
+        temperature: 28,
+        // icon: 'snow',
+        Icon: ({ style, color, size }) => <Feather name="cloud-snow" size={size} color={color} style={style} />,
+    },
 ];
 
 export default Forecast

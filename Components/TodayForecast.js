@@ -12,10 +12,6 @@ const TodayForecast = () => {
     { time: '9:00 PM', temperature: '63°F', condition: 'Cloudy' },
   ];
 
-  React.useEffect(() => {
-    // console.clear();
-    console.log("todaysWeather", todaysWeather);
-  }, [todaysWeather])
 
   return (
     <View style={styles.container}>

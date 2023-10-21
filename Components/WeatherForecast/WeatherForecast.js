@@ -1,23 +1,20 @@
 import React from 'react';
-import { StyleSheet, View, Text, Image } from 'react-native';
+import { StyleSheet, View, Text, Image, Pressable } from 'react-native';
 import forecast from "../../data/DummyData";
-import { Feather } from '@expo/vector-icons';
 import { useAppContext } from '../../Context/Context';
 
 const WeatherForecast = () => {
-  // const days = ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY'];
-  
-  const { days } = useAppContext();
+  const { days, setCurrentDAy } = useAppContext();
 
   return (
     <View style={styles.forecastContainer}>
       {forecast?.map((day, index) => (
-        <View key={index} style={styles.forecastDay}>
+        <Pressable key={index} style={styles.forecastDay} onPress={() => setCurrentDAy(days[index])}>
           <Text style={styles.forecastDayLabel}>{days[index]}</Text>
-          <day.Icon size={24} color="#fff"  style={styles.forecastweather}/>
+          <day.Icon size={24} color="#fff" style={styles.forecastweather} />
 
           <Text style={styles.forecastDayTemperature}>{day.temperature}°C</Text>
-        </View>
+        </Pressable>
       ))}
     </View>
   );

@@ -34,10 +34,18 @@ export default function Search({ forecast }) {
 
     return (
         <View style={styles.container}>
-            <TextInput placeholder='search location' value={searchval} onChangeText={(value) => setSearchVAl(value)} style ={styles.searchStyles} />
+            <TextInput placeholder='search location' value={searchval} onChangeText={(value) => setSearchVAl(value)} style={styles.searchStyles} />
             <Suggestions suggestions={suggestions} />
+
+            <Feather
+                name="search"
+                size={30}
+                color="#fff"
+                style={styles.searchIcon}
+                onPress={handleSearch}
+            />
         </View>
-    )
+    );
 };
 
 const styles = StyleSheet.create({
@@ -49,10 +57,10 @@ const styles = StyleSheet.create({
         fontSize: 20,
         color: 'black',
         borderRadius: 50,
-        backgroundColor: 'orange', 
+        backgroundColor: 'orange',
         width: '60%',
         height: '100%',
-        margin:'auto',
+        margin: 'auto',
         marginTop: '9%',
     }
 });

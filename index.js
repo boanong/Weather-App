@@ -8,7 +8,7 @@ import { AppContextProvider } from './Context/Context';
 // the environment is set up appropriately
 
 function MyApp() {
-    return(
+    return (
         <AppContextProvider>
             <App />
         </AppContextProvider>

@@ -1,24 +1,23 @@
 
 import { StyleSheet, View, Text, Pressable } from "react-native";
 import { useAppContext } from "../../Context/Context";
-import { distributeWeather } from "../../Services/weather/functions";
-import getLocationWeather from "../../Services/weather/weather.api";
+import getWeatherData from "../../Services/weather/weather.api";
 
 export default function Suggestions({ suggestions = [] }) {
-  const { setWeatherForeCast, setTodaysWeather, setDays } = useAppContext();
+  const { setWeatherForeCast, setTodaysWeather, setDays, setCurrentDAy, setLocation } = useAppContext();
 
   const getWeather = (lat, lon) => {
-    getLocationWeather(lat, lon)
-      .then(weather => {
-        const { _5_day_weather, sorted_days } = distributeWeather(weather.list);
-        const today = new Date().toDateString();
+    getWeatherData(lat, lon)
+      .then((res) => {
+        const { _5_day_weather, sorted_days, today } = res;
 
-        console.clear();
         console.log({ _5_day_weather, sorted_days });
 
         setWeatherForeCast(_5_day_weather);
         setTodaysWeather(_5_day_weather[today]);
         setDays([...sorted_days]);
+        setCurrentDAy(today);
+        setLocation(location);
       })
       .catch(console.log);
   }
