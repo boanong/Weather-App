@@ -62,7 +62,7 @@ export default function Search({ forecast }) {
                 <Feather
                     name="search"
                     size={30}
-                    color="#fff"
+                    color="white"
                     style={styles.searchIcon}
                     onPress={handleSearch}
                 />
@@ -83,6 +83,13 @@ const styles = StyleSheet.create({
         position: "relative",
         zIndex: 3,
     },
+
+    searchIcon: {
+        position: 'absolute',
+        right: 25,
+        top: 30,
+      },
+
     input: {
         height: 90
     },
