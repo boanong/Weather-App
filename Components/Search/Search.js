@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
         height: 90
     },
     searchStyles: {
-        fontSize: 20,
+        fontSize: 21,
         color: 'black',
         borderRadius: 50,
         backgroundColor: 'orange',
