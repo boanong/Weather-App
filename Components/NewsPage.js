@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
   newsItem: {
     marginTop: 20,
     flexDirection: "row", borderRadius: 10,
-    backgroundColor: "#f8f8f8",
+    backgroundColor: "#f8f8f9",
     width: '93%',
     margin: 'auto'
   },

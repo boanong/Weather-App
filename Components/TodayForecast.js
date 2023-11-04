@@ -35,10 +35,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 10,
     borderBottomWidth: 1,
-    backgroundColor: 'red',
+    backgroundColor: '#ffffff4f',
     marginBottom: 'auto',
     width: '90%',
-    margin: 'auto'
+    margin: 'auto',
+    marginTop: 20,
+    borderRadius: 10,
   },
   forecastContainer: {
     alignItems: 'center',

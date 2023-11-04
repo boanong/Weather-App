@@ -26,9 +26,7 @@ export default function App() {
         style={styles.gradient}
       >
         <Search />
-        {/* Search Icon */}
 
-        {/* Weather component */}
         <View style={styles.weatherContainer}>
           <Text style={styles.location}>
             <Feather name="map-pin" size={17} color="#fff" marginRight={0} style={styles.locationIcon} />
@@ -41,7 +39,6 @@ export default function App() {
 
           <WeatherSection />
 
-          {/* Wind, humidity, and air quality */}
           <View style={styles.weatherDetailsContainer}>
             <View style={styles.weatherDetail}>
               <Feather name="wind" size={24} color="#fff" />
@@ -66,7 +63,7 @@ export default function App() {
         <WeatherForecast />
         <TodayForecast />
 
-        {/* <FooterSection /> */}
+        <FooterSection />
       </LinearGradient>
     </View>
   );
@@ -149,7 +146,7 @@ const styles = StyleSheet.create({
     fontSize: 25,
     color: '#fff',
     textAlign: 'center',
-    marginTop: 50,
+    marginTop: 60,
     marginBottom: 0,
     position: 'absolute',
     fontSize: '20pt',
