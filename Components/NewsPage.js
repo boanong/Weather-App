@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
   newsItem: {
     marginTop: 20,
     flexDirection: "row", borderRadius: 10,
-    backgroundColor: "#f8f8f9",
+    backgroundColor: "#f8f8f8",
     width: '93%',
     margin: 'auto'
   },
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
   image: {
     width: 100,
     height: '100%',
-    borderTopLeftRadius: 10,
+    borderTopLeftRadius: 11,
     borderBottomLeftRadius: 10,
     resizeMode: "cover",
   },
