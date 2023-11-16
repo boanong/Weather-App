@@ -5,7 +5,7 @@ import getWeatherData, { getCurrentWeather } from "../Services/weather/weather.a
 const AppContext = createContext(null);
 
 const AppContextProvider = ({ children }) => {
-    const [days, setDays] = useState(['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY']);
+    const [days, setDays] = useState(['Sun', 'Mon', 'Tues', 'Wed', 'Thurs']);
     const [weatherForeCast, setWeatherForeCast] = useState(null);
     const [currentDay, setCurrentDAy] = useState(""); // is equivalent to new Date().toLocaleDateString('en-US', { weekday: "long" });
     const [todaysWeather, setTodaysWeather] = useState([]);
