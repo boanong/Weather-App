@@ -9,11 +9,18 @@ export default function Search({ forecast }) {
   const [suggestions, setLocationSuggestions] = React.useState(null);
   const [showSuggestions, setShowSuggestions] = React.useState(true);
   const [showSearchBAr, setShowSearchBar] = React.useState(true);
+  const [showModal, setShowModal] = React.useState(false);
 
-  const handleClose = () => {
+  const handleBlure = () => {
     setShowSuggestions(false);
     setShowSearchBar(false);
   };
+
+  const handleFocus = () => {
+    if (suggestions) {
+      setShowModal(true);
+    }
+  }
 
   const handleSearch = async () => {
     if (!searchval.trim()) return;
@@ -26,6 +33,7 @@ export default function Search({ forecast }) {
       console.log({ res });
 
       setLocationSuggestions(res);
+      setShowSuggestions(true);
     } catch (error) {
       console.log(error);
     }
@@ -41,8 +49,14 @@ export default function Search({ forecast }) {
 
   React.useEffect(() => {
     console.clear();
-    console.log({ showSearchBAr })
-  }, [showSearchBAr])
+    console.log({ suggestions });
+  }, [suggestions]);
+
+  React.useEffect(() => {
+    if (showSuggestions && suggestions) {
+      setShowModal(true);
+    } else setShowModal(false);
+  }, [showSuggestions, suggestions]);
 
   return (
     <View style={styles.container}>
@@ -58,20 +72,20 @@ export default function Search({ forecast }) {
       />
 
       {showSearchBAr && (
-
         <View style={styles.searchContainer}>
           <TextInput
-
             style={styles.input}
             placeholder='search location'
             value={searchval}
-            onBlur={handleClose}
+            // onBlur={handleBlure}
+            onFocus={handleFocus}
             onChangeText={(value) => setSearchVAl(value)}
             style={styles.searchStyles}
           />
         </View>
-
       )}
+
+      {showModal && <Suggestions suggestions={suggestions} setShowSuggestions={setShowSuggestions} />}
     </View>
   );
 };

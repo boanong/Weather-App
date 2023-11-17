@@ -2,9 +2,13 @@
 import { StyleSheet, View, Text, Pressable } from "react-native";
 import { useAppContext } from "../../Context/Context";
 
-export default function Suggestions({ suggestions = [] }) {
+export default function Suggestions({ setShowSuggestions, suggestions = [] }) {
   const { updateStatesAndCurrentLocation } = useAppContext();
 
+  const handlePress = async (lat, lon) => {
+    await updateStatesAndCurrentLocation(lat, lon);
+    setShowSuggestions(false);
+  }
 
   return (
     <View style={styles.suggestions}>  
@@ -12,7 +16,7 @@ export default function Suggestions({ suggestions = [] }) {
       <View>
         {suggestions?.map((suggestion) => {
           return (
-            <Pressable key={suggestion.country} style={{ border: "1px solid gray", textAlign: "left", paddingLeft: "5px" }} onPress={() => updateStatesAndCurrentLocation(suggestion.lat, suggestion.lon)}>
+            <Pressable key={suggestion.country} style={{ border: "1px solid gray", textAlign: "left", paddingLeft: "5px" }} onPress={() => handlePress(suggestion.lat, suggestion.lon)}>
               <Text>{suggestion.name}</Text>
               <Text>country: {suggestion.country}</Text>
               <Text>lat: {suggestion.lat}</Text>
