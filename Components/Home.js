@@ -149,7 +149,6 @@ const styles = StyleSheet.create({
     marginTop: 60,
     marginBottom: 0,
     position: 'absolute',
-    fontSize: '20pt',
   },
 
   locationIcon: {

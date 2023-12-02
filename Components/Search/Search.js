@@ -74,13 +74,11 @@ export default function Search({ forecast }) {
       {showSearchBAr && (
         <View style={styles.searchContainer}>
           <TextInput
-            style={styles.input}
+            style={styles.searchStyles}
             placeholder='search location'
             value={searchval}
-            // onBlur={handleBlure}
             onFocus={handleFocus}
             onChangeText={(value) => setSearchVAl(value)}
-            style={styles.searchStyles}
           />
         </View>
       )}
@@ -93,7 +91,7 @@ export default function Search({ forecast }) {
 const styles = StyleSheet.create({
   container: {
     position: "relative",
-    zIndex: 3,
+    zIndex: 4,
   },
 
   searchIcon: {
@@ -111,9 +109,6 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
   },
 
-  input: {
-    height: 90
-  },
   searchStyles: {
     fontSize: 21,
     color: 'black',
