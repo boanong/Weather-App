@@ -91,12 +91,12 @@ export default function Search({ forecast }) {
 const styles = StyleSheet.create({
   container: {
     position: "relative",
-    zIndex: 4,
+    zIndex: 3,
   },
 
   searchIcon: {
     position: 'fixed',
-    right: 25,
+    right: 26,
     top: 31,
     zIndex: 59,
   },
