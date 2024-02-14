@@ -60,6 +60,10 @@ export default function Search({ forecast }) {
 
   return (
     <View style={styles.container}>
+
+      <View>
+        
+      </View>
       <Feather
         style={styles.searchIcon}
         onPress={() => {
@@ -74,6 +78,7 @@ export default function Search({ forecast }) {
       {showSearchBAr && (
         <View style={styles.searchContainer}>
           <TextInput
+          
             style={styles.searchStyles}
             placeholder='search location'
             value={searchval}
@@ -92,6 +97,7 @@ const styles = StyleSheet.create({
   container: {
     position: "relative",
     zIndex: 3,
+    backgroundColor: 'yellow'
   },
 
   searchIcon: {
@@ -99,6 +105,9 @@ const styles = StyleSheet.create({
     right: 26,
     top: 31,
     zIndex: 59,
+    color: 'red',
+    marginLeft: 50, 
+    backgroundColor: "cyan"
   },
 
   searchContainer: {

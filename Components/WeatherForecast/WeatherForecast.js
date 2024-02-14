@@ -11,8 +11,7 @@ const WeatherForecast = () => {
       {forecast?.map((day, index) => (
         <Pressable key={index} style={styles.forecastDay} onPress={() => setCurrentDAy(days[index])}>
           <Text style={styles.forecastDayLabel}>{days[index]}</Text>
-          <day.Icon size={24} color="#fff" style={styles.forecastweather} />
-
+          <Image source={day.icon} style={styles.forecastWeatherIcon} />
           <Text style={styles.forecastDayTemperature}>{day.temperature}°C</Text>
         </Pressable>
       ))}
@@ -24,14 +23,15 @@ const styles = StyleSheet.create({
   forecastContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center', // Center vertically
     marginTop: 20,
     width: '90%',
     backgroundColor: '#ffffff4f',
     padding: 10,
     height: 150,
-    margin: 'auto',
     borderRadius: 20,
-    // opacity: 0.5,
+    marginHorizontal: '5%', // Center horizontally
+    backgroundColor: 'pink'
   },
 
   forecastDay: {
@@ -48,11 +48,10 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
 
-  forecastweather: {
+  forecastWeatherIcon: {
     marginTop: 20,
-
+    width: 24,
   }
-
 });
 
 export default WeatherForecast;

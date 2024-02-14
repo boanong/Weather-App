@@ -6,15 +6,15 @@ const WeatherSection = () => {
   return (
     <View style={styles.container}>
       <View style={styles.leftSection}>
-        <Feather name="droplet" size={24} color="white" /> {/* Water icon */}
-        <Text style={styles.text}>Chance of <br />precipitation</Text>
+        <Feather name="droplet" size={24} color="white" />
+        <Text style={styles.text}>Chance of precipitation</Text>
       </View>
 
       <View style={styles.line} />
 
       <View style={styles.rightSection}>
-        <Feather name="sun" size={24} color="white" /> {/* Sun icon */}
-        <Text style={styles.text}>UV <br /> Index</Text>
+        <Feather name="sun" size={24} color="white" />
+        <Text style={styles.text}>UV Index</Text>
       </View>
     </View>
   );
@@ -29,8 +29,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 10,
     paddingHorizontal: 10,
-    justifyContent: 'center',
-    marginTop: '50',
+    justifyContent: 'space-around', 
+    marginTop: 50, 
   },
   leftSection: {
     flexDirection: 'row',
@@ -44,9 +44,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     width: 2,
     height: '70%',
-    alignSelf: 'center',
-    marginLeft: 30,
-    marginRight: 30,
   },
   text: {
     color: 'white',

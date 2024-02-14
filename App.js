@@ -3,10 +3,9 @@ import { StyleSheet, View, TouchableOpacity, Text } from 'react-native';
 import GetStarted from './Components/GetStarted';
 import Home from './Components/Home';
 import NewsPage from './Components/NewsPage';
-import { Stack } from '@react-navigation/stack';
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-
+import Notifications from './Components/Notifications/Notifications'; // Corrected import statement
 
 const App = () => {
   const Stack = createNativeStackNavigator();
@@ -17,22 +16,25 @@ const App = () => {
         <Stack.Screen
           name="Home"
           component={Home}
-          headerTitle="Home"
-          options={{ headerShown: false }}
+          options={{ title: 'Home', headerShown: false }} // Updated options format
         />
-        
+
         <Stack.Screen
           name="GetStarted"
           component={GetStarted}
-          headerTitle="Get Started"
-          options={{ headerShown: false }}
+          options={{ title: 'Get Started', headerShown: false }} // Updated options format
         />
 
         <Stack.Screen
           name="NewsPage"
           component={NewsPage}
-          headerTitle="News"
-          options={{ headerShown: false }}
+          options={{ title: 'News', headerShown: false }} // Updated options format
+        />
+
+        <Stack.Screen
+          name="Notifications"
+          component={Notifications}
+          options={{ title: 'Notifications', headerShown: true }} // Updated options format
         />
       </Stack.Navigator>
     </NavigationContainer>

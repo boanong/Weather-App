@@ -15,11 +15,13 @@ const TodayForecast = () => {
 
   return (
     <View style={styles.container}>
+
       {todaysWeather?.map((forecast, index) => (
         <View key={forecast.dt} style={styles.forecastContainer}>
           <Text style={styles.time}>{removeSecondsFromTime(forecast.dt_txt)}</Text>
           <Text style={styles.temperature}>{forecast.main.temp + " "}&deg;C</Text>
           <Text style={styles.condition}>{forecast.weather[0].description}</Text>
+
         </View>
       ))}
     </View>
@@ -38,13 +40,20 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff4f',
     marginBottom: 'auto',
     width: '90%',
+    height: 100,
     margin: 'auto',
     marginTop: 20,
     borderRadius: 10,
+    marginBottom: 80,
+    alignItems: 'center',
+    marginHorizontal: '5%' 
+
+
   },
   forecastContainer: {
     alignItems: 'center',
   },
+
   time: {
     fontSize: 16,
     fontWeight: 'bold',
