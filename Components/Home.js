@@ -20,6 +20,7 @@ export default function Home() {
   }, [location])
 
   return (
+    <> 
     <ScrollView style={styles.container}>
     
       <StatusBar />
@@ -64,9 +65,11 @@ export default function Home() {
         <WeatherForecast />
         <TodayForecast />
 
-        <FooterSection />
       </LinearGradient>
     </ScrollView>
+            <FooterSection />
+            </>
+
   );
 }
 

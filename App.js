@@ -6,6 +6,13 @@ import NewsPage from './Components/NewsPage';
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Notifications from './Components/Notifications/Notifications'; // Corrected import statement
+// import PremiereNewsStory from './Components/NewsStories/PremiereNewsStory'
+import FifthNewsStory from './Components/NewsStories/FifthNewsStory';
+import SecondNewsStory from './Components/NewsStories/SecondNewsStory';
+import ThirdNewsStory from './Components/NewsStories/ThirdNewsStory';
+import FourthNewsStory from './Components/NewsStories/FifthNewsStory'; 
+
+
 
 const App = () => {
   const Stack = createNativeStackNavigator();
@@ -36,6 +43,42 @@ const App = () => {
           component={Notifications}
           options={{ title: 'Notifications', headerShown: true }} // Updated options format
         />
+
+{/* <Stack.Screen
+          name="PremiereNewsStory"
+          component={PremiereNewsStory}
+          options={{ title: 'News', headerShown: false }} // Updated options format
+        /> */}
+
+
+<Stack.Screen
+          name="FifthNewsStory"
+          component={FifthNewsStory}
+          options={{ title: 'News', headerShown: false }} // Updated options format
+        />
+<Stack.Screen
+          name="SecondNewsStory"
+          component={SecondNewsStory}
+          options={{ title: 'News', headerShown: false }} // Updated options format
+        />
+<Stack.Screen
+          name="ThirdNewsStory"
+          component={ThirdNewsStory}
+          options={{ title: 'News', headerShown: false }} // Updated options format
+        />
+<Stack.Screen
+          name="ThirdNewsStory"
+          component={ThirdNewsStory}
+          options={{ title: 'News', headerShown: false }} // Updated options format
+        />
+
+<Stack.Screen
+          name="FourthNewsStory"
+          component={FourthNewsStory}
+          options={{ title: 'News', headerShown: false }} // Updated options format
+        />
+
+
       </Stack.Navigator>
     </NavigationContainer>
   );

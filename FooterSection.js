@@ -11,20 +11,20 @@ const FooterSection = () => {
         <View style={styles.footerContainer}>
             <TouchableOpacity style={styles.item}
                 onPress={() => navigation.navigate('Home')}>
-                <FontAwesome name="home" size={20} color="black" /> 
+                <FontAwesome name="home" size={18} color="black" /> 
                 <Text style={styles.text}>Home</Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.item}
                 onPress={() => navigation.navigate('NewsPage')}>
-                <FontAwesome name="newspaper-o" size={20} color="black" />
+                <FontAwesome name="newspaper-o" size={18} color="black" />
                 <Text style={styles.text}>News</Text>
             </TouchableOpacity>
 
             <TouchableOpacity onPress={() =>navigation.navigate('Notifications')}
                 style={styles.item}>
 
-                <FontAwesome name="bell" size={20} color="black" />
+                <FontAwesome name="bell" size={18} color="black" />
                 <Text style={styles.text}>Notifications</Text>
             </TouchableOpacity>
         </View>
