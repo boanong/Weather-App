@@ -48,11 +48,6 @@ export default function Search({ forecast }) {
   }, [searchval]);
 
   React.useEffect(() => {
-    console.clear();
-    console.log({ suggestions });
-  }, [suggestions]);
-
-  React.useEffect(() => {
     if (showSuggestions && suggestions) {
       setShowModal(true);
     } else setShowModal(false);

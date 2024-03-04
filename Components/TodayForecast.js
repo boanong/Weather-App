@@ -12,15 +12,14 @@ const TodayForecast = () => {
     { time: '9:00 PM', temperature: '63°F', condition: 'Cloudy' },
   ];
 
-
   return (
     <View style={styles.container}>
 
       {todaysWeather?.map((forecast, index) => (
         <View key={forecast.dt} style={styles.forecastContainer}>
           <Text style={styles.time}>{removeSecondsFromTime(forecast.dt_txt)}</Text>
-          <Text style={styles.temperature}>{forecast.main.temp + " "}&deg;C</Text>
-          <Text style={styles.condition}>{forecast.weather[0].description}</Text>
+          <Text style={styles.temperature}>{forecast.temp + " "}&deg;C</Text>
+          <Text style={styles.condition}>{forecast.description}</Text>
 
         </View>
       ))}
@@ -46,7 +45,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginBottom: 80,
     alignItems: 'center',
-    marginHorizontal: '5%' 
+    marginHorizontal: '5%'
 
 
   },

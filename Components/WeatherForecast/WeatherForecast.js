@@ -1,20 +1,35 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { StyleSheet, View, Text, Image, Pressable } from 'react-native';
 import forecast from "../../data/DummyData";
 import { useAppContext } from '../../Context/Context';
 
 const WeatherForecast = () => {
-  const { days, setCurrentDAy } = useAppContext();
+  const { days, setCurrentDay, currentDay, weatherForeCast } = useAppContext();
+
+  console.log({ weatherForeCast })
 
   return (
     <View style={styles.forecastContainer}>
-      {forecast?.map((day, index) => (
-        <Pressable key={index} style={styles.forecastDay} onPress={() => setCurrentDAy(days[index])}>
-          <Text style={styles.forecastDayLabel}>{days[index]}</Text>
-          <Image source={day.icon} style={styles.forecastWeatherIcon} />
-          <Text style={styles.forecastDayTemperature}>{day.temperature}°C</Text>
-        </Pressable>
-      ))}
+      {weatherForeCast && Object.keys(weatherForeCast)?.map((day, index) => {
+
+        const weather_obj = weatherForeCast[day][0];
+
+        const dynamicStyles = useMemo(() => {
+          if (currentDay === day) {
+            return {...styles.forecastDay, ...styles.currentDay}
+          }
+          
+          return {...styles.forecastDay}
+        }, [currentDay]);
+
+        return (
+          <Pressable key={day} style={dynamicStyles} onPress={() => setCurrentDay(day)}>
+            <Text style={styles.forecastDayLabel}>{day}</Text>
+            <Image source={weather_obj.icon_url} style={styles.forecastWeatherIcon} />
+            <Text style={styles.forecastDayTemperature}>{Math.round(weather_obj.temp)}°C</Text>
+          </Pressable>
+        )
+      })}
     </View>
   );
 };
@@ -23,19 +38,23 @@ const styles = StyleSheet.create({
   forecastContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center', // Center vertically
+    alignItems: 'center', 
     marginTop: 20,
     width: '90%',
     backgroundColor: '#ffffff4f',
     padding: 10,
     height: 150,
     borderRadius: 20,
-    marginHorizontal: '5%', // Center horizontally
+    marginHorizontal: '5%', 
     backgroundColor: 'pink'
   },
 
   forecastDay: {
     alignItems: 'center',
+  },
+  
+  currentDay: {
+    backgroundColor: 'brown',
   },
 
   forecastDayLabel: {

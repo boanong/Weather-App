@@ -13,7 +13,16 @@ const getDefaultLocation = async () => {
     return fetch(url).then(res => res.json())
 }
 
+const shortenText = (text = '', max_legnth = 50) => {
+    const isTooLong = text.length > max_legnth;
+
+    if (isTooLong) return text.substring(0, max_legnth - 3) + '...';
+
+    return text;
+}
+
 export {
     removeSecondsFromTime,
-    getDefaultLocation
+    getDefaultLocation,
+    shortenText,
 }

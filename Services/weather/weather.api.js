@@ -1,4 +1,4 @@
-import { API_KEY } from "../Constants";
+import { API_KEY, ARRAY_DAYS } from "../Constants";
 import { distributeWeather } from "./functions";
 
 const getWeatherFromLocation = async (lat, lon) => {
@@ -14,7 +14,7 @@ export const getWeatherData = async (lat, lon) => {
     return getWeatherFromLocation(lat, lon)
         .then(weather => {
             const { _5_day_weather, sorted_days } = distributeWeather(weather.list);
-            const today = new Date().toLocaleDateString('en-US', { weekday: "long" });
+            const today = ARRAY_DAYS[new Date().getDay()];
 
             return {
                 _5_day_weather,

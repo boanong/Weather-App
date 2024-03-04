@@ -1,16 +1,25 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import { getDefaultLocation } from "../Services/utils";
 import getWeatherData, { getCurrentWeather } from "../Services/weather/weather.api";
+import { getIconUrl } from "../Services/weather/functions";
 
 const AppContext = createContext(null);
 
 const AppContextProvider = ({ children }) => {
-    const [days, setDays] = useState(['Sun', 'Mon', 'Tues', 'Wed', 'Thurs']);
+    const [days, setDays] = useState([]); // example ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs']
     const [weatherForeCast, setWeatherForeCast] = useState(null);
-    const [currentDay, setCurrentDAy] = useState(""); // is equivalent to new Date().toLocaleDateString('en-US', { weekday: "long" });
+    const [currentDay, setCurrentDay] = useState(""); // is equivalent to ARRAY_DAYS[new Date().getDay()];
     const [todaysWeather, setTodaysWeather] = useState([]);
     const [location, setLocation] = useState(null);
-    const [currentWeather, setCurrentWeather] = useState(null);  // the users current weather. not a forecast
+    const [currentWeather, setCurrentWeather] = useState({
+        dt_txt: '',
+        temp: '',
+        description: '',
+        wind_speed: '',
+        pressure: '',
+        humidity: '',
+        icon_url: '',
+    });  // the users current weather. not a forecast
 
     const updateWeatherStates = (lat, lon) => {
         getWeatherData(lat, lon)
@@ -19,7 +28,7 @@ const AppContextProvider = ({ children }) => {
                 setWeatherForeCast(_5_day_weather);
                 setTodaysWeather(_5_day_weather[today]);
                 setDays([...sorted_days]);
-                setCurrentDAy(today);
+                setCurrentDay(today);
                 setLocation(loc)
             })
             .catch(console.log);
@@ -29,14 +38,16 @@ const AppContextProvider = ({ children }) => {
         const res = await getCurrentWeather(lat, lon);
 
         console.clear();
-        console.log("res", res)
+        console.log("res", res);
 
         const res_data = {
+            dt_txt: res.dt_txt,
             temp: res.main.temp,
             description: res.weather[0].description,
             wind_speed: res.wind.speed,
             pressure: res.main.pressure,
             humidity: res.main.humidity,
+            icon_url: getIconUrl(res.weather[0].icon),
         }
 
         setCurrentWeather(res_data);
@@ -72,7 +83,7 @@ const AppContextProvider = ({ children }) => {
         location,
 
         currentDay,
-        setCurrentDAy,
+        setCurrentDay,
 
         weatherForeCast,
         setWeatherForeCast,

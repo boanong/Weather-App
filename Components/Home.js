@@ -16,59 +16,59 @@ export default function Home() {
   const { currentWeather, location } = useAppContext();
 
   React.useEffect(() => {
-    console.log({location})
+    console.log({ location })
   }, [location])
 
   return (
-    <> 
-    <ScrollView style={styles.container}>
-    
-      <StatusBar />
-      <LinearGradient
-        colors={['rgba(1, 73, 194, 1)', 'rgba(19, 166, 243, 1)']}
-        style={styles.gradient}
-      >
-        <Search />
+    <>
+      <ScrollView style={styles.container}>
 
-        <View style={styles.weatherContainer}>
-          <Text style={styles.location}>
-            <Feather name="map-pin" size={17} color="#fff" marginRight={0} style={styles.locationIcon} />
-            {location?.name ?? "Location"}
-          </Text>
+        <StatusBar />
+        <LinearGradient
+          colors={['rgba(1, 73, 194, 1)', 'rgba(19, 166, 243, 1)']}
+          style={styles.gradient}
+        >
+          <Search />
 
-          <Image source={cloudPicture} style={styles.cloudPicture} />
-          <Text style={styles.temperature}>{currentWeather?.temp ?? "T"} &deg;</Text>
-          <Text style={styles.weatherDescription}>{currentWeather?.description ?? ""}</Text>
+          <View style={styles.weatherContainer}>
+            <Text style={styles.location}>
+              <Feather name="map-pin" size={17} color="#fff" marginRight={0} style={styles.locationIcon} />
+              {location?.name ?? "Location"}
+            </Text>
 
-          <WeatherSection />
+            <Image source={cloudPicture} style={styles.cloudPicture} />
+            <Text style={styles.temperature}>{currentWeather?.temp ?? "T"} &deg;</Text>
+            <Text style={styles.weatherDescription}>{currentWeather?.description ?? ""}</Text>
 
-          <View style={styles.weatherDetailsContainer}>
-            <View style={styles.weatherDetail}>
-              <Feather name="wind" size={24} color="#fff" /> 
-              <Text style={styles.weatherDetailText}>Wind</Text>
-              <Text style={styles.weatherDetailText}>{currentWeather?.wind_speed ?? ""} km/h</Text>
-            </View>
+            <WeatherSection />
 
-            <View style={[styles.weatherDetail, { marginVertical: 10 }]}>
-              <Feather name="droplet" size={24} color="#fff" />
-              <Text style={styles.weatherDetailText}>Humidity</Text>
-              <Text style={styles.weatherDetailText}>{currentWeather?.humidity ?? "H"} %</Text>
-            </View>
+            <View style={styles.weatherDetailsContainer}>
+              <View style={styles.weatherDetail}>
+                <Feather name="wind" size={24} color="#fff" />
+                <Text style={styles.weatherDetailText}>Wind</Text>
+                <Text style={styles.weatherDetailText}>{currentWeather?.wind_speed ?? ""} km/h</Text>
+              </View>
 
-            <View style={[styles.weatherDetail, { marginVertical: 10 }]}>
-              <Feather name="thermometer" size={24} color="#fff" />
-              <Text style={styles.weatherDetailText}>Air Pressure</Text>
-              <Text style={styles.weatherDetailText}>{currentWeather?.pressure ?? ""} Pa</Text>
+              <View style={[styles.weatherDetail, { marginVertical: 10 }]}>
+                <Feather name="droplet" size={24} color="#fff" />
+                <Text style={styles.weatherDetailText}>Humidity</Text>
+                <Text style={styles.weatherDetailText}>{currentWeather?.humidity ?? "H"} %</Text>
+              </View>
+
+              <View style={[styles.weatherDetail, { marginVertical: 10 }]}>
+                <Feather name="thermometer" size={24} color="#fff" />
+                <Text style={styles.weatherDetailText}>Air Pressure</Text>
+                <Text style={styles.weatherDetailText}>{currentWeather?.pressure ?? ""} Pa</Text>
+              </View>
             </View>
           </View>
-        </View>
-        <WeatherForecast />
-        <TodayForecast />
+          <WeatherForecast />
+          <TodayForecast />
 
-      </LinearGradient>
-    </ScrollView>
-            <FooterSection />
-            </>
+        </LinearGradient>
+      </ScrollView>
+      <FooterSection />
+    </>
 
   );
 }

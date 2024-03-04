@@ -1,13 +1,31 @@
+import { ARRAY_DAYS } from '../Constants';
+
+const getIconUrl = (icon) => `https://openweathermap.org/img/w/${icon}.png`;
+
+const parseWeatherObjt = (weather_obj) => {
+    const parsed_obj = {
+        dt_txt: weather_obj.dt_txt,
+        temp: weather_obj.main.temp,
+        description: weather_obj.weather[0].description,
+        wind_speed: weather_obj.wind.speed,
+        pressure: weather_obj.main.pressure,
+        humidity: weather_obj.main.humidity,
+        icon_url: getIconUrl(weather_obj.weather[0].icon),
+    }
+
+    return parsed_obj;
+}
+
 const getWeatherToday = (weather_arr) => {
-    const todaylist = []; // weather_arr.filter(({ dt_txt }) => new Date(dt_txt).toLocaleDateString('en-US', { weekday: "long" }) === new Date().toLocaleDateString('en-US', { weekday: "long" }));
+    const todaylist = []; // weather_arr.filter(({ dt_txt }) => ARRAY_DAYS[new Date(dt_txt).getDay()] === ARRAY_DAYS[new Date().getDay()]);
 
     const restOfDaysList = [];
 
     for (const weather of weather_arr) {
-        if (new Date(weather.dt_txt).toLocaleDateString('en-US', { weekday: "long" }) === new Date().toLocaleDateString('en-US', { weekday: "long" })) {
-            todaylist.push(weather);
+        if (ARRAY_DAYS[new Date(weather.dt_txt).getDay()] === ARRAY_DAYS[new Date().getDay()]) {
+            todaylist.push(parseWeatherObjt(weather));
         } else {
-            restOfDaysList.push(weather);
+            restOfDaysList.push(parseWeatherObjt(weather));
         }
     }
 
@@ -31,18 +49,19 @@ const getWeatherToday = (weather_arr) => {
     }
 }
 
-const getCurrentDay = (firstForADay) => new Date(firstForADay.dt_txt).toLocaleDateString('en-US', { weekday: "long" });
+const getCurrentDay = (firstForADay) => {
+    const day_indx = new Date(firstForADay.dt_txt).getDay(); // eg 0
+    return ARRAY_DAYS[day_indx]; // eg 'Sun
+};
 
-const getSortedDays = (array_days) => array_days.sort((a, z) => new Date(a) < new Date(z));
-
-export const distributeWeather = (weather_arr) => {
+const distributeWeather = (weather_arr) => {
     if (!weather_arr) return {};
 
     const NWP = 8 // NWP means number of weather objects per day. 8 for 8 weather forecasts per day.
 
     const { today, restOfDays } = getWeatherToday(weather_arr);
 
-    const firstDayInForecast = getCurrentDay(today.weatherlist[0]) // to get the first day in the forecast
+    const firstDayInForecast = getCurrentDay(today.weatherlist[0]); // to get the first day in the forecast
 
     const _5_day_weather = {
         [firstDayInForecast]: today.weatherlist.slice(0, 3),
@@ -56,8 +75,15 @@ export const distributeWeather = (weather_arr) => {
         _5_day_weather[that_day] = restOfDays.weatherlist.slice(i * NWP, i * NWP + NWP).slice(0, 3);
     }
 
+    console.log('keys', Object.keys(_5_day_weather), _5_day_weather);
+
     return {
         _5_day_weather,
-        sorted_days: getSortedDays(Object.keys(_5_day_weather))
+        sorted_days: Object.keys(_5_day_weather)
     };
+}
+
+export {
+    distributeWeather,
+    getIconUrl,
 }
