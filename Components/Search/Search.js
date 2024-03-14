@@ -56,9 +56,7 @@ export default function Search({ forecast }) {
   return (
     <View style={styles.container}>
 
-      <View>
-        
-      </View>
+
       <Feather
         style={styles.searchIcon}
         onPress={() => {
@@ -90,9 +88,10 @@ export default function Search({ forecast }) {
 
 const styles = StyleSheet.create({
   container: {
-    position: "relative",
-    zIndex: 3,
-    backgroundColor: 'yellow'
+    backgroundColor: 'yellow',
+    height: 25,
+    width: "100%"
+    
   },
 
   searchIcon: {
@@ -111,6 +110,8 @@ const styles = StyleSheet.create({
     left: 85,
     width: '60%',
     paddingLeft: 10,
+    backgroundColor: "red",
+    width: "100%"
   },
 
   searchStyles: {
